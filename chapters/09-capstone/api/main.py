@@ -1,5 +1,7 @@
 import asyncio
 
+import uvicorn
+
 from agent import QueueCallbackHandler, agent_executor
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
@@ -55,3 +57,6 @@ async def invoke(content: str):
             "Connection": "keep-alive",
         }
     )
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
